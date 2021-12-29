@@ -10,7 +10,7 @@ const favouriteList = document.querySelector(".js-favourite-list");
 
 
 let allResults = []; //Array donde guadamos todos los que busca el usuario
-let favouriteResults = []; //Array donde guaramos las series favoritas del usuario
+let favouriteResults = []; //Array donde guardamos las series favoritas del usuario
 
 
 //Function fetch to get information from Api
@@ -42,14 +42,13 @@ function paintAllResults() {
       allResultsList.innerHTML += `<li class="results_container__list--item addtofav"> <img class="results_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2">${resultsName} </h2></li>`;
     }
   }
-  const allFilms = document.querySelectorAll(".addtofav"); //Anado evento a cada peli que aparece para poder anadirla a la lista de favoritos
+  const allFilms = document.querySelectorAll(".addtofav"); //añado evento a cada peli que aparece para poder añadirla a la lista de favoritos
   for (const favFilm of allFilms) {
     favFilm.addEventListener("click", addToFavList);
   }
 }
 
-//El elemento clicado se guardara en el array favouriteResults
-//Elemento clicado guarda el id en otro array
+//El elemento clicado se guardará en el array favouriteResults
 function addToFavList(event) {
   const filmChangeColor = event.currentTarget;//para anadir clase fondo
   const filmChangeColorTitle = event.currentTarget.contentText
@@ -81,7 +80,7 @@ function paintFavList() {
     eachDeleteIcon.addEventListener("click", deleteElementFromFavList);
   }
 }
-//Function para buscar el indice de el elemento seleccionado y eliminarlo 
+//Function para buscar el índice de el elemento seleccionado y eliminarlo 
 function deleteElementFromFavList(){
     const findFilmSelected = favouriteResults.findIndex(
         (row) => row.dataset === true
