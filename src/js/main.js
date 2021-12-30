@@ -12,12 +12,15 @@ let allResults = []; //Array donde guadamos todos los que busca el usuario
 let favouriteResults = []; //Array donde guardamos las series favoritas del usuario
 let data = {}; //Objeto que guardaremos en localstorage
 
-function getInfo() {
+function getInfoFrom(){
   if (localStorage.getItem("data")) {
     data = JSON.parse(localStorage.getItem("data"));
-    paintFavList();
+    favouriteResults.push(data)
+    paintFavList(data);
   }
 }
+
+getInfoFrom();
 
 //Function fetch to get information from Api
 function getApiInformation(event) {
@@ -79,7 +82,7 @@ function paintFavList() {
       img: favImg,
     };
     if (favImg !== null) {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item"> <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2><i class="fas fa-times-circle icon" ></i></li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item data-name="${favElement}" data-img="${favImg}""> <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2><i class="fas fa-times-circle icon" ></i></li>`;
     } else {
       favouriteList.innerHTML += `<li class="favourite_container__list--item"> <img class="favourite_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> </h2>  <i class="fas fa-window-close"></i></li>`;
     }
@@ -90,6 +93,8 @@ function paintFavList() {
     eachDeleteIcon.addEventListener("click", deleteElementFromFavList);
   }
 }
+
+function deleteElementFromFavList() {}
 
 //Function reset (Elimina los todos los resultados)
 
