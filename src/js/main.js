@@ -12,11 +12,10 @@ let allResults = []; //Array donde guadamos todos los que busca el usuario
 let favouriteResults = []; //Array donde guardamos las series favoritas del usuario
 let data = {}; //Objeto que guardaremos en localstorage
 
-function getInfoFrom(){
+function getInfoFrom() {
   if (localStorage.getItem("data")) {
-    data = JSON.parse(localStorage.getItem("data"));
-    favouriteResults.push(data)
-    paintFavList(data);
+    favouriteResults = JSON.parse(localStorage.getItem("data"));
+    paintFavList(favouriteResults);
   }
 }
 
@@ -68,6 +67,7 @@ function addToFavList(event) {
     favouriteResults.pop(filmSelected); //Si no la tiene la elimina para que no se duplique
   }
 
+  localStorage.setItem("data", JSON.stringify(favouriteResults));
   paintFavList();
 }
 
@@ -77,30 +77,29 @@ function paintFavList() {
   for (let index = 0; index < favouriteResults.length; index++) {
     const favElement = favouriteResults[index].name;
     const favImg = favouriteResults[index].img;
-    const favData = {
-      name: favElement,
-      img: favImg,
-    };
+
     if (favImg !== null) {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item data-name="${favElement}" data-img="${favImg}""> <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2><i class="fas fa-times-circle icon" ></i></li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item data-name="${favElement}" data-img="${favImg}""> <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2> <span class="delete"> X </span> </li>`;
     } else {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item"> <img class="favourite_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> </h2>  <i class="fas fa-window-close"></i></li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item"> <img class="favourite_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> </h2> <span class="delete"> X </span></li>`;
     }
-    localStorage.setItem("data", JSON.stringify(favData));
   }
-  const deleteIcons = document.querySelectorAll(".icon");
+  const deleteIcons = document.querySelectorAll(".delete");
   for (const eachDeleteIcon of deleteIcons) {
     eachDeleteIcon.addEventListener("click", deleteElementFromFavList);
   }
 }
 
-function deleteElementFromFavList() {}
+function deleteElementFromFavList(event) {
+  console.log(event.target.parentNode);
+}
 
 //Function reset (Elimina los todos los resultados)
 
 function resetAllResults(event) {
   event.preventDefault();
   allResultsList.innerHTML = ""; //Vaciamos lista
+  input.value = "";
   allResults.splice(0, allResults.length); //Eliminamos lista de array y empezamos de nuevo
 }
 
