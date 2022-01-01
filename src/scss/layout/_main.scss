@@ -20,7 +20,7 @@
       text-decoration: none;
       list-style-type: none;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr ;
+      grid-template-columns: 1fr 1fr 1fr;
       align-items: center;
     }
     &--img {
@@ -65,7 +65,6 @@
       list-style-type: none;
       text-align: center;
       border-radius: 20px;
-      
     }
     &--img {
       width: 170px;
@@ -78,8 +77,6 @@
       margin: 15px;
       font-size: 15px;
       font-family: Arial, Helvetica, sans-serif;
-      width: 150px;
-      
     }
   }
 }
@@ -88,24 +85,28 @@
   background-color: blue;
 }
 
-.fav{
+.fav {
   border: solid aqua 5px;
 }
 
-.favtitle{
+.favtitle {
   color: aqua;
 }
 
-.delete{
+.delete {
   background-color: pink;
   color: black;
-  font-size: 25px;
+  font-size: 19px;
+  padding: 3px;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 20px;
   font-weight: bold;
   width: 30px;
   height: 30px;
   margin: 10px;
-
-  
+  cursor: pointer;
+  transition: ease 0.8s;
+  &:hover {
+    transform: scale(1.5);
+  }
 }

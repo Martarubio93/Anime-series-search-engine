@@ -10,8 +10,8 @@ const favouriteList = document.querySelector(".js-favourite-list");
 
 let allResults = []; //Array donde guadamos todos los que busca el usuario
 let favouriteResults = []; //Array donde guardamos las series favoritas del usuario
-let data = {}; //Objeto que guardaremos en localstorage
 
+//Function to get infor from LS
 function getInfoFrom() {
   if (localStorage.getItem("data")) {
     favouriteResults = JSON.parse(localStorage.getItem("data"));
@@ -89,9 +89,13 @@ function paintFavList() {
     eachDeleteIcon.addEventListener("click", deleteElementFromFavList);
   }
 }
+//Function que elimina el elemento seleccionado del array favoritos
 
 function deleteElementFromFavList(event) {
   console.log(event.target.parentNode);
+  const elementLS = event.target.parentNode;
+  favouriteResults.pop(elementLS);
+  paintFavList();
 }
 
 //Function reset (Elimina los todos los resultados)
@@ -100,7 +104,7 @@ function resetAllResults(event) {
   event.preventDefault();
   allResultsList.innerHTML = ""; //Vaciamos lista
   input.value = "";
-  allResults.splice(0, allResults.length); //Eliminamos lista de array y empezamos de nuevo
+  allResults.splice(0, allResults.length); //Eliminamos todos los elementos  del array y empezamos de nuevo
 }
 
 resetButton.addEventListener("click", resetAllResults);
