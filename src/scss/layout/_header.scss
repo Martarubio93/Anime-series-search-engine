@@ -24,6 +24,9 @@ header {
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+    &:hover{
+      color: black;
+    }
   }
   &__reset {
     background-color: aqua;
@@ -35,5 +38,8 @@ header {
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+    &:hover{
+      color: black;
+    }
   }
 }
