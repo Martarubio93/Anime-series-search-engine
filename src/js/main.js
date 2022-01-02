@@ -7,6 +7,7 @@ const resetButton = document.querySelector(".reset");
 const submitButton = document.querySelector(".submit");
 const allResultsList = document.querySelector(".js-allresults-list");
 const favouriteList = document.querySelector(".js-favourite-list");
+const resetFav = document.querySelector(".fav-btn-js");
 
 let allResults = []; //Array donde guadamos todos los que busca el usuario
 let favouriteResults = []; //Array donde guardamos las series favoritas del usuario
@@ -47,7 +48,7 @@ function paintAllResults() {
       allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt=""> <h2 class="results_container__list--h2" >${resultsName}</h2>
       </li>`;
     } else {
-      allResultsList.innerHTML += `<li class="results_container__list--item addtofav"> <img class="results_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2">${resultsName} </h2></li>`;
+      allResultsList.innerHTML += `<li class="results_container__list--item addtofav"> <img class="results_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2 titles">${resultsName} </h2></li>`;
     }
   }
   const allFilms = document.querySelectorAll(".addtofav"); //añado evento a cada peli que aparece para poder añadirla a la lista de favoritos
@@ -61,6 +62,7 @@ function addToFavList(event) {
   const filmSelected = event.currentTarget.dataset;
   const filmChangeColor = event.currentTarget; //acceder al currentTarget para cambiar el color del borde
   filmChangeColor.classList.toggle("fav"); //Cambia de color al clicar
+
   if (filmChangeColor.classList.contains("fav")) {
     favouriteResults.push(filmSelected); //Si tiene esa clase lo pushea al array de favoritos
   } else {
@@ -92,9 +94,9 @@ function paintFavList() {
 //Function que elimina el elemento seleccionado del array favoritos
 
 function deleteElementFromFavList(event) {
-  console.log(event.target.parentNode);
   const elementLS = event.target.parentNode;
   favouriteResults.pop(elementLS);
+
   paintFavList();
 }
 
@@ -103,8 +105,19 @@ function deleteElementFromFavList(event) {
 function resetAllResults(event) {
   event.preventDefault();
   allResultsList.innerHTML = ""; //Vaciamos lista
-  input.value = "";
-  allResults.splice(0, allResults.length); //Eliminamos todos los elementos  del array y empezamos de nuevo
+  input.value = ""; //Vaciamos input
+  allResults.splice(0, allResults.length); //Eliminamos todos los elementos  del array
 }
 
 resetButton.addEventListener("click", resetAllResults);
+
+//Function reset (Elimina todos los favoritos de array y LS)
+function resetAllfav(event) {
+  event.preventDefault();
+  favouriteResults.innerHTML = "";
+  favouriteResults.splice(0, favouriteResults.length);
+  localStorage.removeItem("data");
+  paintFavList();
+}
+
+resetFav.addEventListener("click", resetAllfav);
