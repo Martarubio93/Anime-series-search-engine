@@ -24,6 +24,6 @@ Una vez aparecen los resultados de búsqueda, la usuaria puede indicar cuáles s
 - Hay que mostrar un listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con las series favoritas. Os recomendamos crear una variable o constante de tipo array en JS para almacenar las series favoritas.
 - Las series favoritas deben seguir apareciendo a la izquierda aunque la usuaria realice otra búsqueda.
 
-** Almacenamiento Local **
+**Almacenamiento Local**
 
 Hay que almacenar el listado de favoritos en el localStorage. De esta forma, al recargar la página el listado de favoritos debe mostrarse.
