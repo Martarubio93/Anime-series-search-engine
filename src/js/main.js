@@ -9,22 +9,22 @@ const allResultsList = document.querySelector(".js-allresults-list");
 const favouriteList = document.querySelector(".js-favourite-list");
 const resetFav = document.querySelector(".fav-btn-js");
 
-let allResults = []; //Array donde guadamos todos los que busca el usuario
-let favouriteResults = []; //Array donde guardamos las series favoritas del usuario
+let allResults = []; //Array para la búsqueda del usuario
+let favouriteResults = []; //Array para las series favoritas
 
 //Function to get infor from LS
-function getInfoFrom() {
+function getInfoFromLS() {
   if (localStorage.getItem("data")) {
     favouriteResults = JSON.parse(localStorage.getItem("data"));
     paintFavList(favouriteResults);
   }
 }
 
-getInfoFrom();
+getInfoFromLS();
 
 //Function fetch to get information from Api
 function getApiInformation(event) {
-  let userSearch = input.value; //Info que busca el usuario
+  let userSearch = input.value;
   event.preventDefault();
   fetch(`https://api.jikan.moe/v3/search/anime?q=${userSearch}`)
     .then((response) => response.json())
@@ -34,7 +34,7 @@ function getApiInformation(event) {
     });
 }
 
-//Event para buscar
+//Fetch event
 submitButton.addEventListener("click", getApiInformation);
 
 //function que pinta la lista de resultados
@@ -45,7 +45,7 @@ function paintAllResults() {
     const resultsImg = allResults[i].image_url;
     const resultsName = allResults[i].title;
     if (resultsImg !== null) {
-      allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt=""> <h2 class="results_container__list--h2" >${resultsName}</h2>
+      allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt=""> <h2 class="results_container__list--h2 titles" >${resultsName}</h2>
       </li>`;
     } else {
       allResultsList.innerHTML += `<li class="results_container__list--item addtofav"> <img class="results_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2 titles">${resultsName} </h2></li>`;
@@ -60,7 +60,10 @@ function paintAllResults() {
 //El elemento clicado se guardará en el array favouriteResults
 function addToFavList(event) {
   const filmSelected = event.currentTarget.dataset;
-  const filmChangeColor = event.currentTarget; //acceder al currentTarget para cambiar el color del borde
+  const title = event.currentTarget.lastChild.previousSibling; //acceder h2
+  const filmChangeColor = event.currentTarget; //acceder al currentTarget
+  title.classList.toggle("favtitle");
+
   filmChangeColor.classList.toggle("fav"); //Cambia de color al clicar
 
   if (filmChangeColor.classList.contains("fav")) {
