@@ -44,8 +44,9 @@ function paintAllResults() {
   for (let i = 0; i < allResults.length; i++) {
     const resultsImg = allResults[i].image_url;
     const resultsName = allResults[i].title;
+    const resultId = allResults[i].mal_id;
     if (resultsImg !== null) {
-      allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt=""> <h2 class="results_container__list--h2 titles" >${resultsName}</h2>
+      allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-id="${resultId}" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt=""> <h2 class="results_container__list--h2 titles" >${resultsName}</h2>
       </li>`;
     } else {
       allResultsList.innerHTML += `<li class="results_container__list--item addtofav"> <img class="results_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2 titles">${resultsName} </h2></li>`;
@@ -68,6 +69,7 @@ function addToFavList(event) {
 
   if (filmChangeColor.classList.contains("fav")) {
     favouriteResults.push(filmSelected); //Si tiene esa clase lo pushea al array de favoritos
+    
   } else {
     favouriteResults.pop(filmSelected); //Si no la tiene la elimina para que no se duplique
   }
@@ -82,11 +84,12 @@ function paintFavList() {
   for (let index = 0; index < favouriteResults.length; index++) {
     const favElement = favouriteResults[index].name;
     const favImg = favouriteResults[index].img;
-
+    const favId = favouriteResults[index].id;
+    
     if (favImg !== null) {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item data-name="${favElement}" data-img="${favImg}""> <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2> <span class="delete"> X </span> </li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item data-id="${favId}"> <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2> <span class="delete"> X </span> </li>`;
     } else {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item"> <img class="favourite_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> </h2> <span class="delete"> X </span></li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item data-id="${favId}"> <img class="favourite_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> </h2> <span class="delete"> X </span></li>`;
     }
   }
   const deleteIcons = document.querySelectorAll(".delete");
@@ -94,12 +97,13 @@ function paintFavList() {
     eachDeleteIcon.addEventListener("click", deleteElementFromFavList);
   }
 }
-//Function que elimina el elemento seleccionado del array favoritos
+//Function que elimina el elemento del array favoritos
 
 function deleteElementFromFavList(event) {
-  const elementLS = event.target.parentNode;
-  favouriteResults.pop(elementLS);
-
+  const elementLS = event.target.parentNode.dataset.id;
+  const deleteFromFav = favouriteResults.findIndex(id => id.favouriteResults === elementLS)
+  favouriteResults.splice(deleteFromFav, 1);
+  console.log(deleteFromFav)
   paintFavList();
 }
 
