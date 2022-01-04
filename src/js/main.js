@@ -69,7 +69,12 @@ function addToFavList(event) {
   if (filmChangeColor.classList.contains("fav")) {
     favouriteResults.push(filmSelected); //Si tiene esa clase lo pushea al array de favoritos
   } else {
-    favouriteResults.pop(filmSelected); //Si no la tiene la elimina para que no se duplique
+    //favouriteResults.pop(filmSelected); //Si no la tiene la elimina para que no se duplique
+    const findFav = favouriteResults.findIndex( (item ) => item.name === filmSelected.name)
+    console.log(favouriteResults);
+    console.log(filmSelected);
+    favouriteResults.splice(findFav,1)
+    console.log(findFav)
   }
 
   localStorage.setItem("data", JSON.stringify(favouriteResults));
