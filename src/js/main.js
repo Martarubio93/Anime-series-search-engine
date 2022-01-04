@@ -16,7 +16,9 @@ let favouriteResults = []; //Array para las series favoritas
 function getInfoFromLS() {
   if (localStorage.getItem("data")) {
     favouriteResults = JSON.parse(localStorage.getItem("data"));
+    console.log(favouriteResults)
     paintFavList(favouriteResults);
+
   }
 }
 
