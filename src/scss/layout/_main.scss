@@ -13,12 +13,16 @@
 
 .reset_fav {
   background: pink;
-  border-radius: 50%;
-  font-family: Arial, Helvetica, sans-serif;
+  width: 150px;
+  border-radius: 15px;
+  height: 50px;
+  margin: 30px;
+  font-family: monospace;
+  font-size: 18px;
   color: grey;
   font-weight: bold;
   cursor: pointer;
-  border: none;
+ 
   &:hover {
     color: black;
   }
@@ -34,8 +38,8 @@
   &__title {
     background: pink;
     color: grey;
-    height: 40px;
-    font-family: Arial, Helvetica, sans-serif;
+    height: 45px;
+    font-family: monospace;
   }
   &__list {
     &--item {
@@ -72,8 +76,8 @@
   &__title {
     background: white;
     height: 40px;
-    color: grey;
-    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-family: monospace;
   }
   &__list {
     margin: 30px;
@@ -108,7 +112,7 @@
   color: aqua;
 }
 
-.favtitle{
+.favtitle {
   color: aqua;
 }
 
