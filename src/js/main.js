@@ -8,6 +8,7 @@ const submitButton = document.querySelector(".submit");
 const allResultsList = document.querySelector(".js-allresults-list");
 const favouriteList = document.querySelector(".js-favourite-list");
 const resetFav = document.querySelector(".fav-btn-js");
+const btnFav = document.querySelector(".favoritos")
 
 let allResults = []; //Array para la búsqueda del usuario
 let favouriteResults = []; //Array para las series favoritas
@@ -46,8 +47,9 @@ function paintAllResults() {
   for (let i = 0; i < allResults.length; i++) {
     const resultsImg = allResults[i].image_url;
     const resultsName = allResults[i].title;
+    const type = allResults[i].type;
     if (resultsImg !== null) {
-      allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt="img"> <h2 class="results_container__list--h2 titles" >${resultsName}</h2>
+      allResultsList.innerHTML += `<li class="results_container__list--item addtofav" data-name="${resultsName}" data-img="${resultsImg}" > <img class="results_container__list--img" src="${resultsImg}alt="img"> <h2 class="results_container__list--h2 titles" >${resultsName}</h2> <p class="p"> ${type} </p>
       </li>`;
     } else {
       allResultsList.innerHTML += `<li class="results_container__list--item addtofav"> <img class="results_container__list--img" src="https://via.placeholder.com/210x295/ffffff/666666/?" alt="Imagen no encontrada" <h2 class="results_container__list--h2 titles">${resultsName} </h2></li>`;
@@ -129,3 +131,14 @@ function resetAllfav(event) {
 }
 
 resetFav.addEventListener("click", resetAllfav);
+
+
+function showmeYourName(event){
+event.preventDefault();
+for (const eachFav of favouriteResults) {
+  console.log(eachFav.name)
+}
+}
+
+
+btnFav.addEventListener('click', showmeYourName)
