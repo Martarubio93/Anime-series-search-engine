@@ -1,6 +1,7 @@
 header {
   margin-left: 30px;
   color: aqua;
+  font-family: monospace;
   margin-top: 20px;
  
 }
@@ -15,7 +16,10 @@ header {
     border: solid 3px aqua;
     padding-left: 15px;
     border-radius: 3px;
+    font-family: monospace;
     color: white;
+    outline: none;
+    
   }
   &__submit {
     background-color: aqua;
@@ -25,7 +29,8 @@ header {
     border-radius: 15px;
     color: white;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
+    font-family: monospace;
     cursor: pointer;
     &:hover {
       color: black;
@@ -39,7 +44,8 @@ header {
     border-radius: 15px;
     color: white;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
+    font-family: monospace;
     cursor: pointer;
     &:hover {
       color: black;
@@ -47,8 +53,7 @@ header {
   }
 }
 
-
-.favoritos{
+.console{
   background-color: aqua;
   border: none;
   height: 35px;
@@ -56,5 +61,11 @@ header {
   border-radius: 15px;
   color: white;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
+  font-family: monospace;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
 }
+p{color: white;}
