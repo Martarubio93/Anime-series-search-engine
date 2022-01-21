@@ -67,6 +67,7 @@ function addToFavList(event) {
   const filmSelected = event.currentTarget.dataset;
   const title = event.currentTarget.lastChild.previousSibling.nextSibling; //acceder h2
   const filmChangeColor = event.currentTarget; //acceder al currentTarget
+  console.log(filmSelected.name)
   title.classList.toggle("favtitle");
   filmChangeColor.classList.toggle("fav"); //Cambia de color al clicar
 
@@ -90,9 +91,9 @@ function paintFavList() {
     const favElement = favouriteResults[index].name;
     const favImg = favouriteResults[index].img.replace(imgError);
     if (favImg !== null) {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item data-name="${favElement}" data-img="${favImg}" > <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2> <span class="delete"> X </span> </li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item" data-name="${favElement}" data-img="${favImg}" > <img class="favourite_container__list--img" src="${favImg}"><h2 class="favourite_container__list--h2"> ${favElement} </h2> <span class="delete"> X </span> </li>`;
     } else {
-      favouriteList.innerHTML += `<li class="favourite_container__list--item data-name="${favElement}" data-img="${favImg}""> <img class="favourite_container__list--img" src="${favImg}" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> ${favElement} </h2>  <span class="delete"> X </span></li>`;
+      favouriteList.innerHTML += `<li class="favourite_container__list--item" data-name="${favElement}" data-img="${favImg}""> <img class="favourite_container__list--img" src="${favImg}" alt="Imagen no encontrada" <h2 class="results_container__list--h2"> ${favElement} </h2>  <span class="delete"> X </span></li>`;
     }
   }
   const deleteIcons = document.querySelectorAll(".delete");
