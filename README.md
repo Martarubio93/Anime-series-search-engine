@@ -1,4 +1,4 @@
-#### Anime Series
+## Anime Series
 
 The exercise consisted of developing a web application to search for anime series. In addition, users can add series to a list of favorites and this list will be saved in the local storage. 
 
