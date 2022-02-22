@@ -6,9 +6,9 @@ The exercise consisted of developing a web application to search for anime serie
 
 Clone or download the repository in your computer.
 
-## `npm install`
+`npm install`
 
-## `npm start`
+`npm start`
 
 This runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
