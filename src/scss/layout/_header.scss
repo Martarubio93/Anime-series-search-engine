@@ -3,57 +3,66 @@ header {
   color: aqua;
   font-family: monospace;
   margin-top: 20px;
- 
 }
 
-
-
 .form {
+  margin: 20px;
+  display: flex;
+  gap: 10px;
   &__input {
     width: 50%;
     height: 40px;
-    margin-top: 30px;
     border: solid 3px aqua;
     padding-left: 15px;
     border-radius: 3px;
     font-family: monospace;
     color: white;
     outline: none;
-    
   }
   &__submit {
+    height: 25px;
+    width: 55px;
     background-color: aqua;
     border: none;
-    height: 35px;
-    width: 100px;
-    border-radius: 15px;
     color: white;
-    font-weight: bold;
-    font-size: 20px;
     font-family: monospace;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    @media (min-width: 768px) {
+      height: 35px;
+      width: 100px;
+      border-radius: 15px;
+      font-size: 20px;
+      
+    }
+  }
+  &__reset {
+    height: 25px;
+    width: 55px;
+    background-color: aqua;
+    border: none;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
     &:hover {
       color: black;
     }
-  }
-  &__reset {
-    background-color: aqua;
-    border: none;
-    height: 35px;
-    width: 100px;
-    border-radius: 15px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: monospace;
-    cursor: pointer;
-    &:hover {
-      color: black;
+    @media (min-width:768px){
+      height: 35px;
+      width: 100px;
+      border-radius: 15px;
+      font-size: 20px;
     }
   }
 }
 
-.console{
+.console {
   background-color: aqua;
   border: none;
   height: 35px;
@@ -68,4 +77,6 @@ header {
     color: black;
   }
 }
-p{color: white;}
+p {
+  color: white;
+}

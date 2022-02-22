@@ -2,14 +2,14 @@
   display: flex;
 }
 
-.fav-btn_container {
+/*.fav-btn_container {
   display: flex;
   width: 100px;
   height: 50px;
   margin-left: 18px;
   margin-top: 10px;
   position: absolute;
-}
+}*/
 
 .reset_fav {
   background: pink;
@@ -22,19 +22,25 @@
   color: grey;
   font-weight: bold;
   cursor: pointer;
- 
+
   &:hover {
     color: black;
   }
 }
 
 .favourite_container {
-  border: pink solid 5px;
-  margin-left: 15px;
-  margin-top: 70px;
-  width: 30%;
-  border-radius: 10px;
-  text-align: center;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    border: pink solid 5px;
+    margin-left: 15px;
+    margin-top: 70px;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+  }
   &__title {
     background: pink;
     color: grey;
@@ -43,11 +49,14 @@
   }
   &__list {
     &--item {
-      text-decoration: none;
-      list-style-type: none;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
+      grid-template-columns: 1fr;
+      @media (min-width: 768px) {
+        text-decoration: none;
+        list-style-type: none;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+      }
     }
     &--img {
       width: 100px;
@@ -66,13 +75,18 @@
 }
 
 .results_container {
-  margin-top: 70px;
-  border: black solid 5px;
-  width: 60%;
-  text-align: center;
-  border-radius: 10px;
+  width: 90%;
+  margin: 20px;
   border: white solid 5px;
-  margin-left: 40px;
+  @media (min-width: 768px) {
+    margin-top: 70px;
+    border: black solid 5px;
+    border: white solid 5px;
+    width: 60%;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 40px;
+  }
   &__title {
     background: white;
     height: 40px;
@@ -80,13 +94,20 @@
     font-family: monospace;
   }
   &__list {
-    margin: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-    gap: 5px;
+    grid-template-columns: 1fr;
+    @media (min-width: 768px) {
+      margin: 30px;
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 5px;
+      @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
 
     &--item {
+      object-fit: contain;
       text-decoration: none;
       list-style-type: none;
       text-align: center;
@@ -109,7 +130,11 @@
 
 .fav {
   border: solid aqua 5px;
-  color: aqua;
+  margin: 20px;
+  @media (min-width: 768px) {
+    color: aqua;
+    margin: 0;
+  }
 }
 
 .favtitle {
@@ -134,6 +159,6 @@
   }
 }
 
-.p{
+.p {
   color: white;
 }
